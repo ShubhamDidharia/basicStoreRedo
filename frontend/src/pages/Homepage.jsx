@@ -52,8 +52,8 @@ const Homepage = () => {
                 <div key={product._id} className='bg-white shadow-md rounded-lg p-2'>
                     <img src={product.image} alt={product.name} className='w-full h-48 object-contain rounded-t-lg'/>
                     <div className='flex justify-between items-center mt-2'>
-                        <h2 className='text-xl font-bold mt-2'>{product.name}</h2>
-                        <p className='text-gray-600'>{product.category}</p>
+                        <h2 className={`text-xl font-bold mt-2 bg-clip-text text-transparent ${product.category === 'fire'? ' bg-gradient-to-r from-red-400 to-orange-400':product.category === 'water' ? 'bg-gradient-to-r from-blue-400 to-violet-400' : ' bg-gradient-to-r from-emerald-500 to-lime-600'}`}>{product.name}</h2>
+                        <p className={` capitalize font-bold text-md ${product.category === 'fire'? 'text-red-600' : product.category === 'water'? 'text-blue-600' : 'text-green-600'}`}>{product.category}</p>
                     </div>
                     <div className='flex justify-between items-center mt-2'>
                         <Link to = {`/edit/${product._id}`} className='bg-purple-500 text-white px-2 py-1 rounded shadow-md hover:-translate-y-0.5 hover:shadow-lg transition transform duration-200 ease-in-out'>
