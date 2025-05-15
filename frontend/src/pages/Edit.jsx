@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import axiosInstance from '../api/axios';
 import { toast } from 'react-toastify';
+import { useParams } from 'react-router-dom';
 
 const Edit = () => {
-
+   const { id } = useParams();
    const [formData, setFormData] = useState({
     name: '',
     category: '',
     image: ''
   });
+
+  useEffect(()=>{ 
+    const fetchProduct = async()=>{
+      const res = await axiosInstance.get(`/product/${id}`);
+      setFormData(res.data);
+    };
+    fetchProduct();
+  },[id]);
 
   const handleChange = (e)=>{
     setFormData({
