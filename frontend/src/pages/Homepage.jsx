@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import axiosInstance from '../api/axios';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Homepage = () => {
     const [products, setProducts] = useState([]);
@@ -19,6 +20,7 @@ const Homepage = () => {
         const res = await axiosInstance.delete(`/product/${id}`);
         if(res.status === 200){
             setProducts(products.filter(products =>products._id !== id));
+            toast.error('product deleted');
         }
     }
     

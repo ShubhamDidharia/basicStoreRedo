@@ -1,6 +1,7 @@
 import React from 'react'
 import axiosInstance from '../api/axios';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const CreateItem = () => {
   const [formData, setFormData] = useState({
@@ -20,14 +21,17 @@ const CreateItem = () => {
     e.preventDefault();
     const res = await axiosInstance.post('/product', formData);
     if(res.status === 201){
+      toast.success('added successfully');
       
       setFormData({
         name: '',
         category: '',
         image: ''
       });
-
     }
+    else{
+        toast.error("Something went wrong while creating the product.");
+      }
   }
 
   return (
