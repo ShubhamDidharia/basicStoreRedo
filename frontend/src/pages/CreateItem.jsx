@@ -21,8 +21,7 @@ const CreateItem = () => {
     e.preventDefault();
     const res = await axiosInstance.post('/product', formData);
     if(res.status === 201){
-      toast.success('added successfully');
-      
+      toast.success('Added Successfully');
       setFormData({
         name: '',
         category: '',

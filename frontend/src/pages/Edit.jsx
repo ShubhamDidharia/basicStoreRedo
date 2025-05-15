@@ -29,15 +29,9 @@ const Edit = () => {
 
   const handleSubmit = async(e)=>{
     e.preventDefault();
-    const res = await axiosInstance.post('/product', formData);
-    if(res.status === 201){
-      toast.success('added successfully');
-      
-      setFormData({
-        name: '',
-        category: '',
-        image: ''
-      });
+    const res = await axiosInstance.put(`/product/${id}`, formData);
+    if(res.status === 200){
+      toast.success('Edited Successfully');
     }
     else{
         toast.error("Something went wrong while creating the product.");
